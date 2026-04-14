@@ -1,0 +1,23 @@
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: gold;
+  color: black;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: 18px;
+  box-shadow: 0 0 10px gold;
+}
+
+.btn floating {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: gold;
+  color: black;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: 18px;
+  box-shadow: 0 0 10px gold;
+}
