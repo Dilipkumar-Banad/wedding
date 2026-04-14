@@ -191,7 +191,7 @@ html {
 
 <!-- ENTRY -->
 
-<div style="text-align:center;">
+<div id="entry" style="text-align:center;">
   <h1 style="color:gold; font-family:Cinzel;">💍 Dilip Weds [Name]</h1>
   <p style="opacity:0.7;">Tap to open invitation</p>
   <button onclick="start()">💌 Open Invitation</button>
@@ -318,18 +318,24 @@ target="_blank">
 function start() {
   document.getElementById("entry").style.display = "none";
   let music = document.getElementById("music");
+  let musicBtn = document.getElementById("musicBtn");
   music.volume = 0.3;
   music.play();
+  playing = true;
+  if (musicBtn) musicBtn.innerText = "🎵";
 }
 
 // MUSIC
 let playing = false;
 function toggleMusic() {
   let music = document.getElementById("music");
+  let musicBtn = document.getElementById("musicBtn");
   if (playing) {
     music.pause();
+    if (musicBtn) musicBtn.innerText = "🔇";
   } else {
     music.play();
+    if (musicBtn) musicBtn.innerText = "🎵";
   }
   playing = !playing;
 }
