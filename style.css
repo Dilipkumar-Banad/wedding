@@ -154,3 +154,44 @@ html {
   background: white;
   color: black;
 }
+
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  z-index: 1000;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  transition: top 0.3s;
+}
+
+/* NAV LINKS */
+.nav-link {
+  padding: 8px 15px;
+  background: gold;
+  color: black;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+/* ACTIVE LINK */
+.nav-link.active {
+  background: white;
+  color: black;
+}
+
+/* HOVER */
+.nav-link:hover {
+  transform: scale(1.05);
+}
+
+/* FIX SCROLL OFFSET */
+.section {
+  scroll-margin-top: 80px;
+}
