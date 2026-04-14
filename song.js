@@ -1,22 +1,23 @@
-let music = document.getElementById("music");
-let btn = document.getElementById("musicBtn");
+let music;
+let btn;
 let playing = false;
 
-function start() {
-  document.getElementById("entry").style.display = "none";
-  music.play().then(() => {
-    playing = true;
-    btn.innerHTML = "🔊";
-  }).catch(() => {});
-}
+window.addEventListener('DOMContentLoaded', () => {
+  music = document.getElementById("music");
+  btn = document.getElementById("musicBtn");
+});
 
 function toggleMusic() {
   if (playing) {
     music.pause();
-    btn.innerHTML = "🔇";
+    if (btn) btn.innerText = "🔇";
   } else {
-    music.play();
-    btn.innerHTML = "🔊";
+    music.play().then(() => {
+      if (btn) btn.innerText = "🔊";
+    }).catch(() => {
+      // user interaction required
+    });
   }
+
   playing = !playing;
 }

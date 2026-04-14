@@ -9,6 +9,18 @@ function start() {
   }, 1000);
 
   let music = document.getElementById("music");
-  music.volume = 0.3;
-  music.play();
+  let musicBtn = document.getElementById("musicBtn");
+  if (music) {
+    music.volume = 0.3;
+    music.play().then(() => {
+      if (typeof playing !== 'undefined') {
+        playing = true;
+      }
+      if (musicBtn) {
+        musicBtn.innerText = "🎵";
+      }
+    }).catch(() => {
+      // autoplay may be blocked until user interacts again
+    });
+  }
 }

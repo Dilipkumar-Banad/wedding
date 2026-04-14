@@ -1,16 +1,16 @@
 let current = 0;
-const images = document.querySelectorAll(".gallery img");
 
-setInterval(() => {
-  images.forEach(img => img.style.display = "none");
-  current = (current + 1) % images.length;
-  images[current].style.display = "block";
-}, 3000);
+window.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll(".gallery img");
+  if (images.length === 0) return;
 
+  images.forEach((img, index) => {
+    img.style.display = index === 0 ? "block" : "none";
+  });
 
-
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("loader").style.display = "none";
-  }, 1200);
+  setInterval(() => {
+    images.forEach(img => img.style.display = "none");
+    current = (current + 1) % images.length;
+    images[current].style.display = "block";
+  }, 3000);
 });
