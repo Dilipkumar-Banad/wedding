@@ -190,6 +190,17 @@ html {
 </head>
 
 <body>
+<div style="position:fixed; top:0; width:100%; text-align:center; z-index:1000; background:rgba(0,0,0,0.6); backdrop-filter:blur(5px); padding:5px;">
+  <a href="#details" class="btn">Details</a>
+  <a href="#venue" class="btn">Venue</a>
+  <a href="#rsvp" class="btn">RSVP</a>
+  <a href="#events" class="btn">Events</a>
+  <a href="#memories" class="btn">Memories</a>
+  <a href="#story" class="btn">Our Story</a>
+  <a href="#contact" class="btn">Contact</a>
+  <a href="#share" class="btn">Share</a>
+</div>
+
 
 <!-- ENTRY -->
 
@@ -227,7 +238,7 @@ html {
 
 <!-- DETAILS -->
 
-<div class="section fade">
+<div id="details" class="section fade">
   <h2>📅 Wedding Details</h2>
   <p>Date: [Enter Date]</p>
   <p>Venue: SBS Garden, Gadag</p>
@@ -242,7 +253,7 @@ html {
 
 <!-- EVENTS -->
 
-<div class="section fade">
+<div id="events" class="section fade">
   <h2>🎊 Events</h2>
   <p>💛 Haldi – 10 AM</p>
   <p>🎶 Sangeet – 6 PM</p>
@@ -251,7 +262,7 @@ html {
 
 <!-- VENUE -->
 
-<div class="section fade">
+<div id="venue" class="section fade">
   <h2>📍 Venue Location</h2>
 
   <iframe 
@@ -270,7 +281,7 @@ html {
 
 <!-- GALLERY -->
 
-<div class="section fade">
+<div id="memories" class="section fade">
   <h2>📸 Memories</h2>
   <div class="gallery">
     <img src="https://plus.unsplash.com/premium_photo-1663076211121-36754a46de8d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFycmlhZ2V8ZW58MHx8MHx8fDA%3D" loading="lazy">
@@ -282,7 +293,7 @@ html {
 
 <!-- STORY -->
 
-<div class="section fade">
+<div id="story" class="section fade">
   <h2>🎥 Our Story</h2>
   <video autoplay muted loop playsinline>
     <source src="video.mp4">
@@ -291,21 +302,21 @@ html {
 
 <!-- RSVP -->
 
-<div class="section fade">
+<div id="rsvp" class="section fade">
   <h2>💌 RSVP</h2>
   <a class="btn" href="YOUR_GOOGLE_FORM_LINK">Confirm Attendance</a>
 </div>
 
 <!-- SHARE -->
 
-<div class="section fade">
+<div id="share" class="section fade">
   <h2>📲 Share</h2>
   <a class="btn" href="https://wa.me/?text=Join%20our%20wedding%20https://dilipkumar-banad.github.io/wedding/">Share on WhatsApp</a>
 </div>
 
 <!-- CONTACT -->
 
-<div class="section fade">
+<div id="contact" class="section fade">
   <h2>📞 Contact</h2>
   <a class="btn" href="https://wa.me/917204683500">WhatsApp Groom</a>
 </div>
