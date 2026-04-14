@@ -6,3 +6,11 @@ setInterval(() => {
   current = (current + 1) % images.length;
   images[current].style.display = "block";
 }, 3000);
+
+
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("loader").style.display = "none";
+  }, 1200);
+});

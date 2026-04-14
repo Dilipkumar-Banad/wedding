@@ -42,3 +42,65 @@ canvas {
   position: relative;
   z-index: 1;
 }
+
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  font-family: 'Cinzel', serif;
+}
+
+#loader h1 {
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+
+
+.hero h1 {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.section {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,215,0,0.3);
+  box-shadow: 0 0 15px rgba(255,215,0,0.2);
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .section {
+    margin: 10px;
+    padding: 15px;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.btn {
+  margin: 10px 5px;
+}
