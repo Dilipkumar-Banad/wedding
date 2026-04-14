@@ -36,6 +36,24 @@ body {
   border-radius: 30px;
 }
 
+/* LOADER */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  color: gold;
+  font-size: 24px;
+  font-family: 'Cinzel', serif;
+}
+
+#loader.hidden {
+  display: none;
+}
+
 /* PARTICLES */
 canvas {
   position: fixed;
@@ -166,9 +184,10 @@ h2 { color: gold; font-family: 'Cinzel'; }
   <h2>🎥 Our Story</h2>
   <p>We met in 20XX...</p>
   <p>From friends to forever...</p>
-<video width="90%" autoplay muted loop playsinline>
-  <source src="video.mp4">
-</video>
+  <video width="90%" autoplay muted loop playsinline>
+    <source src="video.mp4">
+  </video>
+</div>
 
 <!-- GALLERY -->
 <div class="section">
@@ -235,6 +254,11 @@ function toggleMusic() {
 
 // COUNTDOWN
 let countDate = new Date("Dec 20, 2026 00:00:00").getTime();
+
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  if (loader) loader.classList.add('hidden');
+});
 
 setInterval(() => {
   let now = new Date().getTime();
