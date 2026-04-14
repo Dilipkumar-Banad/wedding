@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -25,7 +26,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  z-index: 9999;
 }
 
 #entry button {
@@ -34,6 +35,7 @@ body {
   background: gold;
   border: none;
   border-radius: 30px;
+  cursor: pointer;
 }
 
 /* PARTICLES */
@@ -52,28 +54,41 @@ canvas {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('https://images.unsplash.com/photo-1505935428862-770b6f24f629') no-repeat center/cover;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
+              url('https://images.unsplash.com/photo-1505935428862-770b6f24f629') center/cover;
   text-align: center;
-  position: relative;
 }
 
 .hero h1 {
   font-family: 'Cinzel', serif;
   color: gold;
-  z-index: 1;
+  animation: fadeIn 2s ease-in-out;
 }
 
-/* SECTION */
+.hero p {
+  opacity: 0.85;
+}
+
+/* SECTIONS */
 .section {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid gold;
+  margin: 30px 15px;
+  padding: 25px;
   border-radius: 15px;
-  position: relative;
-  z-index: 1;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,215,0,0.3);
+  box-shadow: 0 0 15px rgba(255,215,0,0.2);
 }
 
-h2 { color: gold; font-family: 'Cinzel'; }
+.section h2 {
+  color: gold;
+  font-family: 'Cinzel';
+  margin-bottom: 10px;
+}
+
+.section p {
+  line-height: 1.6;
+}
 
 /* BUTTON */
 .btn {
@@ -83,7 +98,13 @@ h2 { color: gold; font-family: 'Cinzel'; }
   color: black;
   border-radius: 20px;
   text-decoration: none;
-  margin: 10px;
+  margin: 10px 5px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
 }
 
 /* COUNTDOWN */
@@ -92,55 +113,94 @@ h2 { color: gold; font-family: 'Cinzel'; }
 }
 
 /* GALLERY */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .gallery img {
-  width: 90%;
-  max-width: 300px;
+  width: 45%;
+  margin: 5px;
   border-radius: 10px;
   border: 2px solid gold;
 }
 
+/* VIDEO */
 .section video {
-  display: block;
   width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
   border-radius: 10px;
-  background: black;
 }
 
 /* FLOAT BUTTON */
-.floating {
+.btn.floating {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  z-index: 1001;
+  z-index: 9999;
+  box-shadow: 0 0 15px gold;
 }
 
-/* MUSIC BTN */
+/* MUSIC BUTTON */
 .music-btn {
   position: fixed;
   top: 20px;
   right: 20px;
   background: gold;
+  color: black;
   border-radius: 50%;
-  padding: 10px;
-  z-index: 1001;
+  padding: 12px;
+  z-index: 9999;
   cursor: pointer;
+  box-shadow: 0 0 12px gold;
 }
 
+/* FADE ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 28px; }
+  .section { margin: 10px; padding: 15px; }
+}
+
+/* SMOOTH SCROLL */
+html {
+  scroll-behavior: smooth;
+}
 </style>
+
 </head>
 
 <body>
+
 <!-- ENTRY -->
+
 <div id="entry">
   <button onclick="start()">💌 Open Invitation</button>
 </div>
 
 <!-- PARTICLES -->
+
 <canvas id="particles"></canvas>
 
 <!-- MUSIC -->
+
 <audio id="music" loop>
   <source src="song.mp3">
 </audio>
@@ -148,65 +208,40 @@ h2 { color: gold; font-family: 'Cinzel'; }
 <div class="music-btn" onclick="toggleMusic()">🎵</div>
 
 <!-- HERO -->
+
 <div class="hero">
   <h1>💍 Dilip Weds [Name]</h1>
+  <p>Two hearts, one journey ❤️</p>
   <p>Join us in celebrating love</p>
 </div>
 
 <!-- DETAILS -->
-<div class="section">
+
+<div class="section fade">
   <h2>📅 Wedding Details</h2>
   <p>Date: [Enter Date]</p>
-  <p>Venue: SBS GARDEN, Gadag - 582101</p>
+  <p>Venue: SBS Garden, Gadag</p>
 </div>
 
 <!-- COUNTDOWN -->
-<div class="section">
+
+<div class="section fade">
   <h2>⏳ Countdown</h2>
   <div id="timer" class="countdown"></div>
 </div>
 
-<!-- VIDEO -->
-<div class="section">
-  <h2>🎥 Our Story</h2>
-  <p>We met in 20XX...</p>
-  <p>From friends to forever...</p>
-  <video width="90%" autoplay muted loop playsinline>
-    <source src="video.mp4">
-  </video>
-</div>
+<!-- EVENTS -->
 
-<!-- GALLERY -->
-<div class="section">
-  <h2>📸 Memories</h2>
-  <div class="gallery">
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
-  </div>
-</div>
-
-<!-- RSVP -->
-<div class="section">
-  <h2>💌 RSVP</h2>
-  <a class="btn" href="YOUR_GOOGLE_FORM_LINK">Confirm Attendance</a>
-</div>
-
-
-<!-- SHARE -->
-<div class="section">
-  <h2>📲 Share</h2>
-  <a class="btn" href="https://wa.me/?text=Join%20our%20wedding%20https://dilipkumar-banad.github.io/wedding/">Share on WhatsApp</a>
-</div>
-
-<div class="section">
+<div class="section fade">
   <h2>🎊 Events</h2>
   <p>💛 Haldi – 10 AM</p>
   <p>🎶 Sangeet – 6 PM</p>
   <p>💍 Wedding – 11 AM</p>
 </div>
 
-<!-- FLOAT MAP -->
-<div class="section">
+<!-- VENUE -->
+
+<div class="section fade">
   <h2>📍 Venue Location</h2>
 
   <iframe 
@@ -216,26 +251,67 @@ h2 { color: gold; font-family: 'Cinzel'; }
 
   <br>
 
-  <a class="btn" 
-     href="https://www.google.com/maps/dir/?api=1&destination=SBS+Garden+Gadag"
-     target="_blank">
-    🚗 Get Directions
-  </a>
+<a class="btn" 
+  href="https://www.google.com/maps/dir/?api=1&destination=SBS+Garden+Gadag"
+  target="_blank">
+🚗 Get Directions </a>
+
 </div>
 
-<a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding&dates=20261220T110000Z/20261220T140000Z">
-📅 Add to Calendar
-</a>
+<!-- GALLERY -->
 
-<a class="btn" href="https://wa.me/917204683500">
-💬 Contact Groom
-</a>
+<div class="section fade">
+  <h2>📸 Memories</h2>
+  <div class="gallery">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+  </div>
+</div>
+
+<!-- STORY -->
+
+<div class="section fade">
+  <h2>🎥 Our Story</h2>
+  <video autoplay muted loop playsinline>
+    <source src="video.mp4">
+  </video>
+</div>
+
+<!-- RSVP -->
+
+<div class="section fade">
+  <h2>💌 RSVP</h2>
+  <a class="btn" href="YOUR_GOOGLE_FORM_LINK">Confirm Attendance</a>
+</div>
+
+<!-- SHARE -->
+
+<div class="section fade">
+  <h2>📲 Share</h2>
+  <a class="btn" href="https://wa.me/?text=Join%20our%20wedding%20https://dilipkumar-banad.github.io/wedding/">Share on WhatsApp</a>
+</div>
+
+<!-- CONTACT -->
+
+<div class="section fade">
+  <h2>📞 Contact</h2>
+  <a class="btn" href="https://wa.me/917204683500">WhatsApp Groom</a>
+</div>
+
+<!-- FLOAT MAP -->
+
+<a class="btn floating" 
+href="https://www.google.com/maps/dir/?api=1&destination=SBS+Garden+Gadag"
+target="_blank">
+📍 Navigate </a>
 
 <script>
 // START
 function start() {
   document.getElementById("entry").style.display = "none";
-  document.getElementById("music").play();
+  let music = document.getElementById("music");
+  music.volume = 0.3;
+  music.play();
 }
 
 // MUSIC
@@ -264,6 +340,17 @@ setInterval(() => {
 
   document.getElementById("timer").innerHTML = d+"d "+h+"h "+m+"m "+s+"s";
 }, 1000);
+
+// FADE SCROLL
+const sections = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+  sections.forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
 
 // PARTICLES
 let canvas = document.getElementById("particles");
