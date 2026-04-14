@@ -6,6 +6,10 @@ canvas {
   pointer-events: none;
 }
 
+body {
+  letter-spacing: 0.3px;
+}
+
 /* MUSIC BUTTON */
 .music-btn {
   position: fixed;
@@ -56,6 +60,7 @@ canvas {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,215,0,0.3);
   box-shadow: 0 0 15px rgba(255,215,0,0.2);
+  border-bottom: 1px solid rgba(255,215,0,0.2);
 }
 
 /* TEXT SPACING IMPROVEMENT */
@@ -122,6 +127,11 @@ html {
 .gallery img {
   width: 45%;
   margin: 5px;
+  transition: 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
 .fade {
