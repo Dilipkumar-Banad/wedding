@@ -5,93 +5,163 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dilip ❤️ [Partner]</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #0c0c0c;
+  background: radial-gradient(circle at top, #1a1a1a, #000);
   color: #fff;
-  text-align: center;
+  overflow-x: hidden;
 }
 
-h1, h2 {
-  font-family: 'Playfair Display', serif;
-  color: gold;
-}
-
+/* HERO */
 .hero {
-  padding: 60px 20px;
-  background: linear-gradient(to bottom, #000, #1a1a1a);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') no-repeat center/cover;
+  text-align: center;
+  position: relative;
 }
 
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  top: 0;
+  left: 0;
+}
+
+.hero h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 40px;
+  color: gold;
+  z-index: 1;
+}
+
+.hero p {
+  z-index: 1;
+}
+
+/* SECTION */
 .section {
-  margin: 20px;
-  padding: 20px;
-  border: 1px solid gold;
-  border-radius: 15px;
+  margin: 30px;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,215,0,0.3);
+  box-shadow: 0 0 20px rgba(255,215,0,0.2);
 }
 
-img {
+h2 {
+  color: gold;
+  font-family: 'Cinzel', serif;
+}
+
+/* COUNTDOWN */
+.countdown {
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+/* GALLERY */
+.gallery img {
   width: 90%;
   max-width: 300px;
   margin: 10px;
-  border-radius: 10px;
+  border-radius: 15px;
   border: 2px solid gold;
+  transition: transform 0.3s;
 }
 
-.countdown {
-  font-size: 24px;
-  color: gold;
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 
 <body>
 
+<!-- HERO -->
 <div class="hero">
   <h1>💍 Dilip Weds [Name]</h1>
-  <p>With love, we invite you to celebrate our wedding</p>
+  <p>We invite you to celebrate our special day</p>
 </div>
 
-<div class="section">
+<!-- DETAILS -->
+<div class="section fade">
   <h2>📅 Wedding Details</h2>
   <p><b>Date:</b> [Enter Date]</p>
   <p><b>Venue:</b> [Enter Venue]</p>
 </div>
 
-<div class="section">
+<!-- COUNTDOWN -->
+<div class="section fade">
   <h2>⏳ Countdown</h2>
   <div id="timer" class="countdown"></div>
 </div>
 
-<div class="section">
+<!-- GALLERY -->
+<div class="section fade">
   <h2>📸 Our Moments</h2>
-  <img src="photo1.jpg">
-  <img src="photo2.jpg">
+  <div class="gallery">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+  </div>
 </div>
 
-<div class="section">
+<!-- UPDATES -->
+<div class="section fade">
   <h2>📢 Updates</h2>
-  <p>Haldi: Morning 10 AM</p>
-  <p>Reception: Evening 7 PM</p>
+  <p>💛 Haldi: 10 AM</p>
+  <p>🎶 Sangeet: 6 PM</p>
+  <p>💍 Wedding: 11 AM</p>
 </div>
 
+<!-- SCRIPT -->
 <script>
+// Countdown
 var countDownDate = new Date("Dec 20, 2026 00:00:00").getTime();
 
-var x = setInterval(function() {
+setInterval(function() {
   var now = new Date().getTime();
   var distance = countDownDate - now;
 
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  var d = Math.floor(distance / (1000*60*60*24));
+  var h = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
 
-  document.getElementById("timer").innerHTML = days + " Days " + hours + " Hours ";
-
+  document.getElementById("timer").innerHTML = d + " Days " + h + " Hours";
 }, 1000);
+
+// Scroll animation
+const faders = document.querySelectorAll('.fade');
+window.addEventListener('scroll', () => {
+  faders.forEach(el => {
+    const rect = el.getBoundingClientRect().top;
+    if(rect < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
 </script>
 
 </body>
