@@ -61,6 +61,7 @@ body {
   border: 1px solid rgba(255,215,0,0.3);
   box-shadow: 0 0 15px rgba(255,215,0,0.2);
   border-bottom: 1px solid rgba(255,215,0,0.2);
+  scroll-margin-top: 80px;
 }
 
 /* TEXT SPACING IMPROVEMENT */
@@ -147,4 +148,9 @@ html {
 
 .section:not(:last-child) {
   border-bottom: 1px solid rgba(255,215,0,0.15);
+}
+
+.btn.active {
+  background: white;
+  color: black;
 }
