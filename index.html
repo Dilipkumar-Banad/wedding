@@ -360,13 +360,21 @@ setInterval(() => {
 // FADE SCROLL
 const sections = document.querySelectorAll('.fade');
 
-window.addEventListener('scroll', () => {
+function updateSectionVisibility() {
   sections.forEach(el => {
-    if(el.getBoundingClientRect().top < window.innerHeight - 100){
+    const rect = el.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight - 100 && rect.bottom > 100;
+    if (isVisible) {
       el.classList.add('show');
+    } else {
+      el.classList.remove('show');
     }
   });
-});
+}
+
+window.addEventListener('scroll', updateSectionVisibility);
+window.addEventListener('resize', updateSectionVisibility);
+window.addEventListener('load', updateSectionVisibility);
 
 // PARTICLES
 let canvas = document.getElementById("particles");
