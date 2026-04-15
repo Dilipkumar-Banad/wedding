@@ -1,5 +1,5 @@
 const clientData = {
-  groom: "Dilip",
+  groom: "Name",
   bride: "Name",
   date: "December 20, 2026",
   location: "Gadag",
@@ -54,6 +54,10 @@ function applyClientData() {
 
   document.getElementById("mapFrame").src = maps;
   document.getElementById("dirBtn").href = directions;
+  const navigateBtn = document.getElementById("navigateBtn");
+  if (navigateBtn) {
+    navigateBtn.href = directions;
+  }
   document.getElementById("contactBtn").href = `https://wa.me/${phone}`;
   document.getElementById("rsvpBtn").href = rsvp;
   document.getElementById("storyText").innerText = story;
