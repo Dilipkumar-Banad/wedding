@@ -129,6 +129,15 @@ html {
   box-shadow: 0 0 15px rgba(255,215,0,0.4);
 }
 
+.hero h1 {
+  background: linear-gradient(90deg, #ffd700, #fff3b0, #ffd700);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+
 .btn:hover {
   transform: scale(1.08);
   box-shadow: 0 0 25px gold;
