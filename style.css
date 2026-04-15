@@ -215,3 +215,51 @@ html {
 .section {
   scroll-margin-top: 80px;
 }
+
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.animated-heart {
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+}
+
+.animated-ring {
+    position: relative;
+    animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Additional styles for the floating elements */
+.floating-hearts {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.floating-rings {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
