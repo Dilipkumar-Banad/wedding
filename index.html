@@ -521,10 +521,10 @@ html {
     <span class="glass-ring ring-1"></span>
     <span class="glass-ring ring-2"></span>
   </div>
-  <h1>💍 Dilip Weds [Name]</h1>
+  <h1 id="title">💍 Dilip Weds Name</h1>
   <p>Two hearts, one journey ❤️</p>
   <p>Join us in celebrating love</p>
-  <p style="font-size:14px; opacity:0.7;">
+  <p id="dateLoc" style="font-size:14px; opacity:0.7;">
   December 20, 2026 • Gadag
 </p>
 <p style="position:absolute; bottom:45px; opacity:0.5;">
@@ -536,8 +536,8 @@ html {
 
 <div id="details" class="section fade">
   <h2>📅 Wedding Details</h2>
-  <p>Date: [Enter Date]</p>
-  <p>Venue: SBS Garden, Gadag</p>
+  <p>Date: <span id="detailsDate">[Enter Date]</span></p>
+  <p>Venue: <span id="venueText">SBS Garden, Gadag</span></p>
 </div>
 
 <!-- COUNTDOWN -->
@@ -551,9 +551,11 @@ html {
 
 <div id="events" class="section fade">
   <h2>🎊 Events</h2>
-  <p>💛 Haldi – 10 AM</p>
-  <p>🎶 Sangeet – 6 PM</p>
-  <p>💍 Wedding – 11 AM</p>
+  <div id="eventsList">
+    <p>💛 Haldi – 10 AM</p>
+    <p>🎶 Sangeet – 6 PM</p>
+    <p>💍 Wedding – 11 AM</p>
+  </div>
 </div>
 
 <!-- VENUE -->
@@ -562,6 +564,7 @@ html {
   <h2>📍 Venue Location</h2>
 
   <iframe 
+    id="mapFrame"
     src="https://www.google.com/maps?q=SBS+Garden+Gadag&output=embed"
     width="100%" height="200" style="border:0; border-radius:10px;">
   </iframe>
@@ -569,6 +572,7 @@ html {
   <br>
 
 <a class="btn" 
+  id="dirBtn"
   href="https://www.google.com/maps/dir/?api=1&destination=SBS+Garden+Gadag"
   target="_blank">
 🚗 Get Directions </a>
@@ -579,7 +583,7 @@ html {
 
 <div id="memories" class="section fade">
   <h2>📸 Memories</h2>
-  <div class="gallery">
+  <div id="gallery" class="gallery">
     <img src="https://plus.unsplash.com/premium_photo-1663076211121-36754a46de8d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFycmlhZ2V8ZW58MHx8MHx8fDA%3D" loading="lazy">
     <img src="https://www.oncology-central.com/wp-content/uploads/2026/04/OC-feature-image.png" loading="lazy">
     <img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/9030/iStock_72610687_MEDIUM.jpg" loading="lazy">
@@ -591,20 +595,18 @@ html {
 
 <div id="story" class="section fade">
   <h2>🎥 Our Story</h2>
-  <p style="text-align:center; opacity:0.8;">
+  <p id="storyText" style="text-align:center; opacity:0.8;">
   From strangers to soulmates,  
   this journey led us to forever ❤️
   </p>
-  <video id="storyVideo" controls loop playsinline>
-    <source src="video.mp4">
-  </video>
+  <video id="storyVideo" controls loop playsinline></video>
 </div>
 
 <!-- RSVP -->
 
 <div id="rsvp" class="section fade">
   <h2>💌 RSVP</h2>
-  <a class="btn" href="YOUR_GOOGLE_FORM_LINK">Confirm Attendance</a>
+  <a id="rsvpBtn" class="btn" href="YOUR_GOOGLE_FORM_LINK">Confirm Attendance</a>
 </div>
 
 <!-- SHARE -->
@@ -618,7 +620,7 @@ html {
 
 <div id="contact" class="section fade">
   <h2>📞 Contact</h2>
-  <a class="btn" href="https://wa.me/917204683500">WhatsApp Groom</a>
+  <a id="contactBtn" class="btn" href="https://wa.me/917204683500">WhatsApp Groom</a>
 </div>
 
 <!-- FLOAT MAP -->
@@ -756,6 +758,7 @@ window.addEventListener("scroll", () => {
 });
 </script>
 
+<script src="data.js"></script>
 <script src="entry.js"></script>
 <script src="song.js"></script>
 <script src="gallery.js"></script>
