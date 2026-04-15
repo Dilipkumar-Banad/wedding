@@ -176,26 +176,28 @@ html {
 #navbar {
   position: fixed;
   top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   display: flex;
-  gap: 6px;
-  padding: 6px 10px;
+  gap: 8px;
+  padding: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
   z-index: 9999;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.4);
   backdrop-filter: blur(10px);
-  border-radius: 30px;
 }
 
 /* NAV LINKS */
 .nav-link {
-  padding: 8px 12px;
+  padding: 6px 10px;
   background: gold;
   color: black;
   border-radius: 20px;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 11px;
   transition: 0.3s;
+  flex: 0 0 auto;
 }
 
 /* ACTIVE LINK */
