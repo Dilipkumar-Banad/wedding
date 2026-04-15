@@ -11,7 +11,9 @@ const clientData = {
   story: "Our journey begins ❤️",
   video: "video.mp4",
   events: "Haldi-10AM,Sangeet-6PM,Wedding-11AM",
-  gallery: ""
+  gallery: "",
+  entrySubtitle: "Together with our families",
+  entryBtnText: "💌 Open Invitation"
 };
 
 const params = new URLSearchParams(window.location.search);
@@ -38,6 +40,7 @@ function applyClientData() {
   const events = getValue("events");
   const gallery = getValue("gallery");
 
+  document.title = `${groom} ❤️ ${bride}`;
   document.getElementById("title").innerText = `💍 ${groom} Weds ${bride}`;
   document.getElementById("dateLoc").innerText = `${date} • ${location}`;
   document.getElementById("venueText").innerText = venue;
@@ -56,6 +59,23 @@ function applyClientData() {
   document.getElementById("storyText").innerText = story;
   document.getElementById("storyVideo").src = video;
 
+  const entryTitle = getValue("entryTitle") || `💍 ${groom} Weds ${bride}`;
+  const entrySubtitle = getValue("entrySubtitle") || clientData.entrySubtitle;
+  const entryBtnText = getValue("entryBtnText") || clientData.entryBtnText;
+  document.getElementById("entryTitle").innerText = entryTitle;
+  document.getElementById("entrySubtitle").innerText = entrySubtitle;
+  document.getElementById("entryBtn").innerText = entryBtnText;
+
+  const shareUrl = window.location.href;
+  const whatsappShare = document.getElementById("whatsappShare");
+  if (whatsappShare) {
+    whatsappShare.href = `https://wa.me/?text=${encodeURIComponent("Join our wedding " + shareUrl)}`;
+  }
+
+  if (typeof window.setCountdownTarget === 'function') {
+    window.setCountdownTarget(date);
+  }
+
   if (gallery) {
     const images = gallery.split(",");
     let html = "";
@@ -66,4 +86,12 @@ function applyClientData() {
   }
 }
 
-applyClientData();
+function initClientData() {
+  if (document.readyState === "loading") {
+    window.addEventListener("DOMContentLoaded", applyClientData);
+  } else {
+    applyClientData();
+  }
+}
+
+initClientData();

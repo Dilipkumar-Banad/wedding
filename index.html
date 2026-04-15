@@ -61,7 +61,7 @@ canvas {
   justify-content: center;
   align-items: center;
   background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.6)),
-              url('https://images.unsplash.com/photo-1505935428862-770b6f24f629') center/cover;
+              url('https://c7.alamy.com/comp/A356G7/a-pair-of-wedding-rings-on-an-invitation-letter-to-a-wedding-A356G7.jpg') center/cover;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -495,9 +495,9 @@ html {
 <!-- ENTRY -->
 
 <div id="entry" style="text-align:center;">
-  <h1 style="color:gold; font-family:Cinzel;">💍 Dilip Weds [Name]</h1>
-  <p style="opacity:0.7;">Together with our families</p>
-  <button onclick="start()">💌 Open Invitation</button>
+  <h1 id="entryTitle" style="color:gold; font-family:Cinzel;">💍 Dilip Weds [Name]</h1>
+  <p id="entrySubtitle" style="opacity:0.7;">Together with our families</p>
+  <button onclick="start()" id="entryBtn">💌 Open Invitation</button>
 </div>
 
 <!-- PARTICLES -->
@@ -613,7 +613,9 @@ html {
 
 <div id="share" class="section fade">
   <h2>📲 Share</h2>
-  <a class="btn" href="https://wa.me/?text=Join%20our%20wedding%20https://dilipkumar-banad.github.io/wedding/">Share on WhatsApp</a>
+  <div style="display:flex; flex-wrap:wrap; gap:10px;">
+    <a class="btn" href="https://wa.me/?text=Join%20our%20wedding" id="whatsappShare" target="_blank">Share on WhatsApp</a>
+  </div>
 </div>
 
 <!-- CONTACT -->
@@ -633,6 +635,21 @@ target="_blank">
 <script>
 // COUNTDOWN
 let countDate = new Date("Dec 20, 2026 00:00:00").getTime();
+
+function setCountdownTarget(dateString) {
+  if (!dateString) {
+    dateString = "Dec 20, 2026 00:00:00";
+  }
+  let parsed = new Date(dateString);
+  if (Number.isNaN(parsed.getTime())) {
+    parsed = new Date(dateString + " 00:00:00");
+  }
+  if (!Number.isNaN(parsed.getTime())) {
+    countDate = parsed.getTime();
+  }
+}
+
+setCountdownTarget("Dec 20, 2026");
 
 setInterval(() => {
   let now = new Date().getTime();
