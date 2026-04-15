@@ -213,15 +213,19 @@ canvas {
 
 #navbar {
   position: fixed;
-  top: 16px;
-  left: 16px;
+  top: calc(env(safe-area-inset-top, 16px));
+  left: calc(env(safe-area-inset-left, 16px));
   display: flex;
   justify-content: flex-start;
   z-index: 10000;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .menu-container {
   position: relative;
+  transform: translateZ(0);
 }
 
 .menu-btn {
@@ -238,6 +242,7 @@ canvas {
   cursor: pointer;
   box-shadow: 0 0 15px rgba(255,215,0,0.6);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  touch-action: manipulation;
 }
 
 .menu-btn:hover {
