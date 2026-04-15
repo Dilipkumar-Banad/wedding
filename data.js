@@ -5,7 +5,6 @@ const clientData = {
   location: "Gadag",
   venue: "SBS Garden",
   phone: "917204683500",
-  rsvp: "#",
   maps: "https://www.google.com/maps?q=SBS+Garden+Gadag&output=embed",
   dir: "https://www.google.com/maps/dir/?api=1&destination=SBS+Garden+Gadag",
   story: "Our journey begins ❤️",
@@ -32,7 +31,6 @@ function applyClientData() {
   const location = getValue("location");
   const venue = getValue("venue");
   const phone = getValue("phone");
-  const rsvp = getValue("rsvp");
   const maps = getValue("maps");
   const directions = getValue("dir");
   const story = getValue("story");
@@ -59,7 +57,6 @@ function applyClientData() {
     navigateBtn.href = directions;
   }
   document.getElementById("contactBtn").href = `https://wa.me/${phone}`;
-  document.getElementById("rsvpBtn").href = rsvp;
   document.getElementById("storyText").innerText = story;
   document.getElementById("storyVideo").src = video;
 
@@ -84,7 +81,9 @@ function applyClientData() {
     const images = gallery.split(",");
     let html = "";
     images.forEach(img => {
-      html += `<img src="${img}" loading="lazy">`;
+      const cleanImg = img.trim();
+      if (!cleanImg) return;
+      html += `<a href="${cleanImg}" target="_blank" rel="noreferrer noopener"><img src="${cleanImg}" loading="lazy"></a>`;
     });
     document.getElementById("gallery").innerHTML = html;
   }

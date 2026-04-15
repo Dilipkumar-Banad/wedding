@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dilip ❤️ [Partner]</title>
+<title>Wedding Invitation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins&display=swap" rel="stylesheet">
 
@@ -71,7 +71,13 @@ canvas {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
+}
+
+.hero h1,
+.hero p {
+  position: relative;
+  z-index: 2;
 }
 
 .glass-heart,
@@ -302,16 +308,29 @@ canvas {
 
 /* GALLERY */
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.gallery a {
+  width: 100%;
+  display: none;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid gold;
+}
+
+.gallery a.active {
+  display: block;
 }
 
 .gallery img {
-  width: 45%;
-  margin: 5px;
-  border-radius: 10px;
-  border: 2px solid gold;
+  width: 100%;
+  display: block;
+  border-radius: 0;
+  cursor: zoom-in;
 }
 
 /* VIDEO */
@@ -465,7 +484,12 @@ canvas {
 /* MOBILE */
 @media (max-width: 600px) {
   .hero h1 { font-size: 28px; }
+  .hero-decor { display: none; }
   .section { margin: 10px; padding: 15px; }
+  .gallery a {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 /* SMOOTH SCROLL */
@@ -495,7 +519,7 @@ html {
 <!-- ENTRY -->
 
 <div id="entry" style="text-align:center;">
-  <h1 id="entryTitle" style="color:gold; font-family:Cinzel;">💍 Dilip Weds [Name]</h1>
+  <h1 id="entryTitle" style="color:gold; font-family:Cinzel;">💍 [Groom] Weds [Bride]</h1>
   <p id="entrySubtitle" style="opacity:0.7;">Together with our families</p>
   <button onclick="start()" id="entryBtn">💌 Open Invitation</button>
 </div>
@@ -521,7 +545,7 @@ html {
     <span class="glass-ring ring-1"></span>
     <span class="glass-ring ring-2"></span>
   </div>
-  <h1 id="title">💍 Dilip Weds Name</h1>
+  <h1 id="title">💍 [Groom] Weds [Bride]</h1>
   <p>Two hearts, one journey ❤️</p>
   <p>Join us in celebrating love</p>
   <p id="dateLoc" style="font-size:14px; opacity:0.7;">
@@ -584,10 +608,10 @@ html {
 <div id="memories" class="section fade">
   <h2>📸 Memories</h2>
   <div id="gallery" class="gallery">
-    <img src="https://plus.unsplash.com/premium_photo-1663076211121-36754a46de8d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFycmlhZ2V8ZW58MHx8MHx8fDA%3D" loading="lazy">
-    <img src="https://www.oncology-central.com/wp-content/uploads/2026/04/OC-feature-image.png" loading="lazy">
-    <img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/9030/iStock_72610687_MEDIUM.jpg" loading="lazy">
-    <img src="https://static.vecteezy.com/system/resources/thumbnails/053/279/081/small/celebration-scene-adorned-with-elegant-decorations-and-sparkling-accents-photo.jpeg" loading="lazy">
+    <a href="https://plus.unsplash.com/premium_photo-1663076211121-36754a46de8d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFycmlhZ2V8ZW58MHx8MHx8fDA%3D" target="_blank" rel="noreferrer noopener"><img src="https://plus.unsplash.com/premium_photo-1663076211121-36754a46de8d?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bWFycmlhZ2V8ZW58MHx8MHx8fDA%3D" loading="lazy"></a>
+    <a href="https://www.oncology-central.com/wp-content/uploads/2026/04/OC-feature-image.png" target="_blank" rel="noreferrer noopener"><img src="https://www.oncology-central.com/wp-content/uploads/2026/04/OC-feature-image.png" loading="lazy"></a>
+    <a href="https://domf5oio6qrcr.cloudfront.net/medialibrary/9030/iStock_72610687_MEDIUM.jpg" target="_blank" rel="noreferrer noopener"><img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/9030/iStock_72610687_MEDIUM.jpg" loading="lazy"></a>
+    <a href="https://static.vecteezy.com/system/resources/thumbnails/053/279/081/small/celebration-scene-adorned-with-elegant-decorations-and-sparkling-accents-photo.jpeg" target="_blank" rel="noreferrer noopener"><img src="https://static.vecteezy.com/system/resources/thumbnails/053/279/081/small/celebration-scene-adorned-with-elegant-decorations-and-sparkling-accents-photo.jpeg" loading="lazy"></a>
   </div>
 </div>
 
@@ -601,13 +625,6 @@ html {
   </p>
   <video id="storyVideo" controls loop playsinline></video>
 </div>
-
-<!-- RSVP -->
-<!--
-<div id="rsvp" class="section fade">
-  <h2>💌 RSVP</h2>
-  <a id="rsvpBtn" class="btn" href="YOUR_GOOGLE_FORM_LINK">Confirm Attendance</a>
-</div> -->
 
 <!-- SHARE -->
 

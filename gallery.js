@@ -1,16 +1,16 @@
-let current = 0;
+let currentGalleryIndex = 0;
 
 window.addEventListener("DOMContentLoaded", () => {
-  const images = document.querySelectorAll(".gallery img");
-  if (images.length === 0) return;
+  const slides = document.querySelectorAll(".gallery a");
+  if (slides.length === 0) return;
 
-  images.forEach((img, index) => {
-    img.style.display = index === 0 ? "block" : "none";
+  slides.forEach((slide, index) => {
+    slide.classList.toggle("active", index === 0);
   });
 
   setInterval(() => {
-    images.forEach(img => img.style.display = "none");
-    current = (current + 1) % images.length;
-    images[current].style.display = "block";
+    slides[currentGalleryIndex].classList.remove("active");
+    currentGalleryIndex = (currentGalleryIndex + 1) % slides.length;
+    slides[currentGalleryIndex].classList.add("active");
   }, 3000);
 });
