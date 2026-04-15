@@ -211,6 +211,88 @@ canvas {
   transform: translateY(0);
 }
 
+#navbar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10000;
+}
+
+.menu-container {
+  position: relative;
+}
+
+.menu-btn {
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: gold;
+  color: black;
+  font-size: 24px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255,215,0,0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-btn:hover {
+  transform: scale(1.05);
+}
+
+.menu-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 180px;
+  padding: 10px;
+  gap: 8px;
+  background: rgba(0,0,0,0.95);
+  border-radius: 18px;
+  border: 1px solid rgba(255,215,0,0.3);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+  flex-direction: column;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.24s ease, transform 0.24s ease, visibility 0.24s ease;
+  pointer-events: none;
+}
+
+.menu-container:hover .menu-dropdown,
+.menu-container:focus-within .menu-dropdown,
+.menu-container.open .menu-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-link {
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.nav-link:hover {
+  background: rgba(255,215,0,0.2);
+  color: gold;
+}
+
+.nav-link.active {
+  background: rgba(255,255,255,0.16);
+  color: gold;
+}
+
 /* ANIMATION */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px); }
@@ -233,12 +315,17 @@ html {
 
 <body>
 <div id="navbar">
-  <a href="#details" class="btn nav-link">Details</a>
-  <a href="#venue" class="btn nav-link">Venue</a>
-  <a href="#events" class="btn nav-link">Events</a>
-  <a href="#memories" class="btn nav-link">Memories</a>
-  <a href="#story" class="btn nav-link">Our Story</a>
-  <a href="#contact" class="btn nav-link">Contact</a>
+  <div class="menu-container">
+    <button class="menu-btn" aria-label="Open menu">☰</button>
+    <div class="menu-dropdown">
+      <a href="#details" class="nav-link">Details</a>
+      <a href="#venue" class="nav-link">Venue</a>
+      <a href="#events" class="nav-link">Events</a>
+      <a href="#memories" class="nav-link">Memories</a>
+      <a href="#story" class="nav-link">Our Story</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+  </div>
 </div>
 
 
@@ -438,6 +525,28 @@ function update(){
 }
 
 setInterval(draw,30);
+
+const menuContainer = document.querySelector('.menu-container');
+const menuBtn = document.querySelector('.menu-btn');
+const menuLinks = document.querySelectorAll('.menu-dropdown .nav-link');
+
+if (menuBtn && menuContainer) {
+  menuBtn.addEventListener('click', () => {
+    menuContainer.classList.toggle('open');
+  });
+}
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    menuContainer.classList.remove('open');
+  });
+});
+
+window.addEventListener('click', (event) => {
+  if (!menuContainer.contains(event.target)) {
+    menuContainer.classList.remove('open');
+  }
+});
 
 window.addEventListener("scroll", () => {
   let scrollY = window.scrollY;
