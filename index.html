@@ -64,6 +64,75 @@ canvas {
               url('https://images.unsplash.com/photo-1505935428862-770b6f24f629') center/cover;
   text-align: center;
   position: relative;
+  overflow: hidden;
+}
+
+.hero-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-heart,
+.glass-ring {
+  position: absolute;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(255,215,0,0.18);
+}
+
+.glass-heart {
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.45);
+  transform: rotate(45deg);
+}
+
+.glass-heart::before,
+.glass-heart::after {
+  content: '';
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  background: rgba(255,255,255,0.22);
+  border-radius: 50%;
+  top: -15%;
+}
+
+.glass-heart::before {
+  left: 0;
+}
+
+.glass-heart::after {
+  right: 0;
+}
+
+.glass-ring {
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
+}
+
+.glass-ring::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.heart-1 { top: 18%; left: 15%; animation: floatY 6.2s ease-in-out infinite; }
+.heart-2 { top: 25%; right: 18%; animation: floatY 5.4s ease-in-out infinite reverse; }
+.ring-1 { top: 40%; left: 20%; animation: floatY 6.8s ease-in-out infinite; }
+.ring-2 { top: 48%; right: 12%; animation: floatY 5.8s ease-in-out infinite reverse; }
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(8deg); }
 }
 
 .hero::before {
@@ -109,6 +178,8 @@ canvas {
 
 /* SECTIONS */
 .section {
+  position: relative;
+  overflow: hidden;
   margin: 30px 15px;
   padding: 25px;
   border-radius: 15px;
@@ -116,6 +187,78 @@ canvas {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,215,0,0.3);
   box-shadow: 0 0 15px rgba(255,215,0,0.2);
+}
+
+.section-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-decor .glass-heart,
+.section-decor .glass-ring {
+  position: absolute;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 18px rgba(255,215,0,0.18);
+}
+
+.section-decor .glass-heart {
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.35);
+  transform: rotate(45deg);
+}
+
+.section-decor .glass-heart::before,
+.section-decor .glass-heart::after {
+  content: '';
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  background: rgba(255,255,255,0.22);
+  border-radius: 50%;
+  top: -15%;
+}
+
+.section-decor .glass-heart::before {
+  left: 0;
+}
+
+.section-decor .glass-heart::after {
+  right: 0;
+}
+
+.section-decor .glass-ring {
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+}
+
+.section-decor .glass-ring::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.section-decor .glass-heart,
+.section-decor .glass-ring {
+  animation: sectionFloat 6s ease-in-out infinite;
+}
+
+.section-decor .glass-ring {
+  animation-duration: 7.5s;
+}
+
+@keyframes sectionFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(6deg); }
 }
 
 .section h2 {
@@ -360,6 +503,12 @@ html {
 <!-- HERO -->
 
 <div class="hero">
+  <div class="hero-decor">
+    <span class="glass-heart heart-1"></span>
+    <span class="glass-heart heart-2"></span>
+    <span class="glass-ring ring-1"></span>
+    <span class="glass-ring ring-2"></span>
+  </div>
   <h1>💍 Dilip Weds [Name]</h1>
   <p>Two hearts, one journey ❤️</p>
   <p>Join us in celebrating love</p>
@@ -497,6 +646,34 @@ function updateSectionVisibility() {
 window.addEventListener('scroll', updateSectionVisibility);
 window.addEventListener('resize', updateSectionVisibility);
 window.addEventListener('load', updateSectionVisibility);
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.section').forEach(section => {
+    if (section.querySelector('.section-decor')) return;
+    const decor = document.createElement('div');
+    decor.className = 'section-decor';
+
+    const heartA = document.createElement('span');
+    heartA.className = 'glass-heart';
+    const heartB = document.createElement('span');
+    heartB.className = 'glass-heart';
+    const ring = document.createElement('span');
+    ring.className = 'glass-ring';
+
+    const rand = () => Math.round(Math.random() * 60 + 10) + '%';
+    const randSmall = () => Math.round(Math.random() * 40 + 5) + '%';
+
+    heartA.style.top = randSmall();
+    heartA.style.left = randSmall();
+    heartB.style.bottom = randSmall();
+    heartB.style.right = randSmall();
+    ring.style.top = rand();
+    ring.style.right = randSmall();
+
+    decor.append(heartA, heartB, ring);
+    section.prepend(decor);
+  });
+});
 
 // PARTICLES
 let canvas = document.getElementById("particles");
