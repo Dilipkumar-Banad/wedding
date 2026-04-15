@@ -1,5 +1,6 @@
 let music;
 let btn;
+let video;
 let playing = false;
 let musicWasPlayingBeforeVideo = false;
 
@@ -14,6 +15,11 @@ function toggleMusic() {
     music.pause();
     if (btn) btn.innerText = "🔇";
   } else {
+    if (video && !video.paused) {
+      video.pause();
+      musicWasPlayingBeforeVideo = false;
+    }
+
     music.play().then(() => {
       if (btn) btn.innerText = "🔊";
     }).catch(() => {
@@ -25,7 +31,7 @@ function toggleMusic() {
 }
 
 function bindVideoMusicSync() {
-  const video = document.getElementById("storyVideo");
+  video = document.getElementById("storyVideo");
   if (!video || !music) return;
 
   const pauseMusic = () => {
