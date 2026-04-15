@@ -213,11 +213,11 @@ canvas {
 
 #navbar {
   position: fixed;
-  top: calc(env(safe-area-inset-top, 16px));
-  left: calc(env(safe-area-inset-left, 16px));
+  top: 20px;
+  left: 20px;
   display: flex;
   justify-content: flex-start;
-  z-index: 10000;
+  z-index: 9999;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   backface-visibility: hidden;
@@ -225,7 +225,10 @@ canvas {
 
 .menu-container {
   position: relative;
-  transform: translateZ(0);
+  background: rgba(255,215,0,0.18);
+  border-radius: 28px;
+  padding: 6px;
+  box-shadow: 0 0 20px rgba(255,215,0,0.25);
 }
 
 .menu-btn {
