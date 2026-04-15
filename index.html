@@ -417,7 +417,8 @@ setInterval(draw,30);
 
 window.addEventListener("scroll", () => {
   let scrollY = window.scrollY;
-  document.body.style.filter = `brightness(${1 - scrollY / 5000})`;
+  let brightness = Math.max(0.85, 1 - scrollY / 12000);
+  document.body.style.filter = `brightness(${brightness})`;
 });
 </script>
 
