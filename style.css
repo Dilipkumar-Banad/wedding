@@ -87,12 +87,14 @@ body {
 @media (max-width: 600px) {
     #navbar {
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 4px;
+    padding: 5px 8px;
   }
 
   .nav-link {
     font-size: 10px;
-    padding: 6px 10px;
+    padding: 5px 8px;
+    border-radius: 20px;
   }
 
   .hero h1 {
@@ -127,14 +129,6 @@ html {
   font-weight: bold;
   transition: 0.4s;
   box-shadow: 0 0 15px rgba(255,215,0,0.4);
-}
-
-.hero h1 {
-  background: linear-gradient(90deg, #ffd700, #fff3b0, #ffd700);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: none;
 }
 
 
@@ -181,16 +175,16 @@ html {
 
 #navbar {
   position: fixed;
-  top: 0;
-  width: 100%;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 6px;
+  padding: 6px 10px;
   z-index: 9999;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.35);
   backdrop-filter: blur(10px);
-  transition: top 0.3s;
+  border-radius: 30px;
 }
 
 /* NAV LINKS */
