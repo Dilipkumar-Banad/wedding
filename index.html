@@ -60,9 +60,17 @@ canvas {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)),
+  background: radial-gradient(circle, rgba(0,0,0,0.2), black),
               url('https://images.unsplash.com/photo-1505935428862-770b6f24f629') center/cover;
   text-align: center;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
 }
 
 .hero h1 {
@@ -406,6 +414,11 @@ function update(){
 }
 
 setInterval(draw,30);
+
+window.addEventListener("scroll", () => {
+  let scrollY = window.scrollY;
+  document.body.style.filter = `brightness(${1 - scrollY / 5000})`;
+});
 </script>
 
 <script src="entry.js"></script>

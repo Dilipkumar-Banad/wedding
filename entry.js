@@ -2,11 +2,11 @@ function start() {
   let entry = document.getElementById("entry");
 
   entry.style.opacity = "0";
-  entry.style.transition = "1s";
+  entry.style.transition = "2s";
 
   setTimeout(() => {
     entry.style.display = "none";
-  }, 1000);
+  }, 2000);
 
   let music = document.getElementById("music");
   let musicBtn = document.getElementById("musicBtn");
